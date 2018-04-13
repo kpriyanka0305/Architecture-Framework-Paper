@@ -67,32 +67,47 @@ C-ITS Architecture Framework
 \thispagestyle{empty}
 \pagestyle{empty}
 
-
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 
-C-ITS (Cooperative Intelligent Transport Systems) is an initiative to facilitate cooperative, connected and automated mobility. The C-ITS domain comprises widely spread systems like traffic management systems, traffic light controllers, or vehicle on-board units. Such complex and heterogeneous systems have independent uses but demand a strategy to facilitate their convergence. This initiative is currently demonstrated by C-MobILE project. C-MobILE is a large scale deployment Europe Union project spanning from 2017-2020. The main objective of C-MobILE is to define an integrated architecture based on a number of existing C-ITS projects. The architecture provides a way to standardize and to have a unifying modeling approach by means of a common language that can be reused by other organizations to guide their internal processes. 
-
-In this paper, we describe about adaptation of architecture framework, architecture viewpoints and modelling approach for C-ITS systems. The architecture framework and the same modelling approach can enable common language and will be reused for the next deployment projects. To put architecture framework in context, we extend the conceptual model of the ISO/IEC/IEEE 42010\cite{iso42010} architecture framework. The architecture framework is intended to be used as a basis for developing C-MobILE pilot site architectures. This will enable C-MobILE deployment at EU defined eight pilot sites and beyond satisfying stakeholders from public and private parties in an EU context. 
+Cooperative Intelligent Transport System (C-ITS) are Intelligent Transport Systems (ITS) where ITS stations such as vehicles, roadside equipment, traffic control centres and nomadic devices communicate and share information. These complex and heterogeneous systems have their own independent usages. With continuous progress in C-ITS domain, the convergence of these systems demands a strategy to coordinate and communicate with each other efficiently. This initiative is currently demonstrated by C-MobILE project. One of the objective of C-MobILE is to define an integrated architecture based on a number of existing C-ITS architectures. Consolidating the existing C-ITS architectures into a generic standardized architecture requires a structured approach. A structured architecture framework is necessary for defining, controlling the interfaces and the integration of all the components of the C-ITS system. 
+In this paper, we describe about adaptation of architecture framework, architecture viewpoints and the modelling approach for C-ITS systems. The objective of architecture framework is to enable common language and understanding between system architects, stakeholders, and other roles participating in C-ITS. This architecture framework is intended to be used as a basis for the development of C-MobILE eight deployment sites and to provide a guidance for future projects.
 
 \end{abstract}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{INTRODUCTION}
+The European industry has traditionally held a competitive position on a global scale in the field of intelligent transport systems. While Intelligent Transport Systems (ITS) focus on digital technologies providing intelligence placed at the roadside or in vehicles, C-ITS focuses on the communication between those systems, whether it is a vehicle communicating with another vehicle, with the infrastructure, or with other C-ITS systems. This interaction is where the term cooperative comes from. There has been a tremendous amount of progress in the field of cooperative intelligent transport systems (C-ITS). The C-ITS domain covers various fields such as software and systems engineering, traffic engineering, civil engineering, and information technology, which require a unified architecture. C-ITS is currently demonstrated by one of ongoing ITS projects name C-MobILE (Accelerating C-ITS Mobility Innovation and depLoyment in Europe)\footnote{C-MobILE: \url{http://c-mobile-project.eu/}}. C-MobILE is a large scale demonstration project spanning from 2017-2020. The C-MobILE aims for a fully safe and efficient road transport without casualties and serious injuries on European roads. To help achieve the C-MobILE goal, a well structured architecture, capable of being deployed to whole Europe is needed. 
 
-An architecture framework is one of the widely-applied approaches used in software/system architecting of complex systems. The architecture frameworks facilitate communication and cooperation between different stakeholders during architecting and building complex systems such as C-ITS. Many different stakeholders with their interweaving concerns require a systematic approach for addressing complexity and full lifecycle of the system. Example representations of widely applied architecture frameworks include Kruchten?s 4+1 View Model, TOGAF, and Zachman framework. 4+1 is developed by Kruchten as a generic architecture framework for describing the architecture of software-intensive systems based on the use of multiple, concurrent views\cite{kruchten}. TOGAF provides a practical and industry standardized approach for designing an enterprise architecture\cite{togaf}. Zachman framework is used for modeling an enterprise?s information infrastructure from six perspectives\cite{zachman}. 
+Within system and software engineering, the term architecture framework dates back to the 1970s. One can find numerous definitions on the World Wide Web; this one is representative \cite{zachman1} :
+"An enterprise architecture framework, or architecture framework for short, is a prefabricated structure that you can use to organize your enterprise architecture into complementary views. (http://www.architectureframework.com/faq/) "
 
-According to the ISO/IEC/IEEE 42010:2011 standard, an architecture framework establishes a common practice for creating, interpreting, analysing and using architecture descriptions within a particular domain of application or stakeholder community\cite{arch_framework}. As a well-defined architecture framework is considered to be an important part of any architecture description \cite{arch_desc}, we define an architecture framework for the C-ITS domain. To put the architecture framework and architecture description concepts in context, C-MobILE extends the conceptual model of the ISO/IEC/IEEE 42010 international standard for architecture descriptions of systems and software\cite{arch_framework}, uses architecture viewpoints of the architecture framework for automotive systems\cite{yd} and concept of architecture perspective for shaping the architecture views\cite{woods}. Without the common C-ITS architecture framework, different categorizations and ad-hoc notations are used in the existing C-ITS  architectures. The C-ITS domain covers not only software/system engineering field, but also traffic engineering, civil engineering, information technology etc., which require a unified definition of architecture framework for the C-ITS domain. 
-
+An architecture framework is determined by:
+\begin{itemize}
+	\item a set of architecture-related concerns;
+	\item a set of stakeholders holding those concerns;
+	\item a set of architecture viewpoints which frame (i.e., cover) those concerns; and
+	\item a set of model correspondence rules.
+\end{itemize}
+We adapted architecture framework concepts to define C-MobIE architecture. To put the C-MobILE architecture framework concepts in context, we used the conceptual model of the ISO/IEC/IEEE 42010 international standard for architecture descriptions of systems and software\cite{arch_framework}, uses architecture viewpoints of the architecture framework for automotive systems\cite{yd} and concept of architecture perspective for shaping the architecture views\cite{woods}.
 
 
 \section{Problem Statement}
 
-The C-MobILE project aims for a large scale demonstration across various deployment sites.
-These various deployment sites all have their own defined ITS architecture, and their own multidisciplinary approach towards their deployed strategy. These architectures consists of different informal design patterns. There is no standard notation to help in merging these architectures into a standardized architecture. Without a common C-ITS architecture framework, different categorizations and ad-hoc notations have been used in existing C-ITS architectures. These differences creates an inefficient behavior towards a seamless C-ITS implementation across various deployment sites. This impacts in addressing concerns like interoperability.  Hence, a standardized approach is required to consolidate and integrate existing architectures, addressing concerns such as interoperability, security, availability, and maintainability. To help reach the project goals, a good architecture, capable of being deployed to whole Europe is needed.
+Several C-ITS projects such as DTCIM, FREILOT, eCoMove, Compass4D, CO-GISTICS, CONVERGE have demonstrated the potential benefits of large-scale deployment. Most of these architectures have been designed with different objectives in mind, developed and deployed independently from each other. These architectures have their own multidisciplinary approach towards their deployed strategy. Such as in DTCIM architecture, sequence diagrams are used to show the interactions between actors, systems, interfaces etc. Other projects use ad-hoc notations and diagrams to depict the communication between systems and their components. These differences creates an inconsistent and inefficient behavior towards a seamless C-ITS implementation across various deployment sites. While these projects have been instrumental in the development and early, limited-scale deployment of C-ITS, they lack a common overall system architecture. This is the challenge the C-MobILE project aims to solve. One of the C-MobILE objective is to consolidate these existing architectures. Hence, a structured architecture is required by defining a standardized architecture framework and a common modelling language. This will help in having a common understanding between all stakeholders involved in C-MobILE.
 
-\section{Methodology}
+\section{Related Work}
+
+\section{Defining C-ITS Architecture Framework}
+
+\section{Perspective}
+
+\section{Applying C-ITS Arch Framework}
+
+Here we shared the result of ref arch in context of c-mobile
+
 As a well-defined architecture framework is considered to be an important part of any architecture description\cite{arch_desc}, we define an architecture framework for the C-ITS domain. To put architecture framework and architecture description concepts in context, we extend the conceptual model of the ISO/IEC/IEEE 42010 architecture framework as illustrated in \ref{arch_frmework}. The conceptual model of architecture framework is highlighted in blue and the relationships of architecture description concepts are added to the original standard diagram.
 
 \begin{figure}[ht!]
@@ -236,7 +251,9 @@ The context viewpoint has correspondences with functional and physical viewpoint
 	\centering
 \end{figure}
 
+Makse section for "Discussion"
 
+Add
 
 \section{CONCLUSIONS}
 
@@ -280,7 +297,7 @@ The C-MobILE project is funded by the European Union's Horizon 2020 research and
 \bibitem{d31} Dajsuren, Y., Karkhanis, P., Kadiogullary, D. and Fuenfrocken, M. C-MobILE D3.1 Reference Architecture. Available at \url{http://c-mobile.diviprojects.wpengine.com/wp-content/uploads/sites/19/2018/03/C-MobILE-D3.1-ReferenceArchitecture_v0.1.pdf}
 \bibitem{quality}International Organization for Standardization. ISO-IEC 25010: 2011 Systems and Software Engineering-Systems and Software Quality Requirements and Evaluation (SQuaRE)-System and Software Quality Models. ISO, 2011.
 \bibitem{dtcim} van Sambeek, M. Turetken, O., Ophelders, F., Eshuis, R., Bijlsma, T. Traganos, K., Grefen. P (2015) Towards an Architecture for Cooperative ITS Applications in the Netherlands, Version 1.0. DITCM. April 17, 2015. Available at: https://goo.gl/pHSD9D
-
+\bibitem{zachman1}Emery, D. and Hilliard, R., 2009, September. Every architecture description needs a framework: Expressing architecture frameworks using ISO/IEC 42010. In Software Architecture, 2009 \& European Conference on Software Architecture. WICSA/ECSA 2009. Joint Working IEEE/IFIP Conference on (pp. 31-40). IEEE.
 \end{thebibliography}
 
 
